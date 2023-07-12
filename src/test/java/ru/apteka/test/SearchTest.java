@@ -39,49 +39,49 @@ public class SearchTest extends WebTest{
 
 
     @Test
-    @DisplayName("ÐŸÐ¾Ð¸ÑÐº Ð¿Ð¾ Ð¿Ð¾Ð»Ð½Ð¾Ð¼Ñƒ Ð½Ð°Ð¸Ð¼ÐµÐ½Ð¾Ð²Ð°Ð½Ð¸ÑŽ")
-    @Feature("ÐŸÐ¾Ð¸ÑÐº Ñ‚Ð¾Ð²Ð°Ñ€Ð¾Ð²")
-    @Story("Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ Ð¿Ð¾Ð¸ÑÐºÐ°")
+    @DisplayName("Ïîèñê ïî ïîëíîìó íàèìåíîâàíèþ")
+    @Feature("Ïîèñê òîâàðîâ")
+    @Story("Ðåçóëüòàò ïîèñêà")
     public void shouldSearchFullName()  {
 
-        step("Ð’Ð²ÐµÑÑ‚Ð¸ Ð¿Ð¾Ð»Ð½Ð¾Ðµ Ð½Ð°Ð¸Ð¼ÐµÐ½Ð¾Ð²Ð°Ð½Ð¸Ðµ Ñ‚Ð¾Ð²Ð°Ñ€Ð°" , () -> {
-            mainPage.searchInput.sendKeys("ÐÑƒÑ€Ð¾Ñ„ÐµÐ½" + Keys.ENTER);
+        step("Ââåñòè ïîëíîå íàèìåíîâàíèå òîâàðà" , () -> {
+            mainPage.searchInput.sendKeys("Íóðîôåí" + Keys.ENTER);
         });
-        step("ÐŸÑ€Ð¾Ð²ÐµÑ€Ð¸Ñ‚ÑŒ, Ñ‡Ñ‚Ð¾ Ð² ÑÐ¿Ð¸ÑÐºÐµ Ð²Ñ‹Ð²ÐµÐ´ÐµÐ½Ñ‹ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ‚Ð¾Ð²Ð°Ñ€Ñ‹ Ñ Ð¿Ð¾Ð»Ð½Ñ‹Ð¼ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸ÐµÐ¼ Ð¸Ð· Ð¿Ð¾Ð¸ÑÐºÐ°",() ->{
+        step("Ïðîâåðèòü, ÷òî â ñïèñêå âûâåäåíû òîëüêî òîâàðû ñ ïîëíûì íàçâàíèåì èç ïîèñêà",() ->{
            for (SelenideElement element : catalogPage.elCatalog) {
-               element.shouldHave(text("ÐÑƒÑ€Ð¾Ñ„ÐµÐ½ "));
+               element.shouldHave(text("Íóðîôåí "));
          }
-          ///  catalogPage.elCatalog.shouldHave(text("ÐÑƒÑ€Ð¾Ñ„ÐµÐ½ "));
+          ///  catalogPage.elCatalog.shouldHave(text("Íóðîôåí "));
         });
 
 
 
     }
     //  @Test
-    //  @DisplayName("ÐŸÐ¾Ð¸ÑÐº Ð¿Ð¾ Ð½ÐµÐ¿Ð¾Ð»Ð½Ð¾Ð¼Ñƒ Ð½Ð°Ð¸Ð¼ÐµÐ½Ð¾Ð²Ð°Ð½Ð¸ÑŽ")
-    //  @Feature("ÐŸÐ¾Ð¸ÑÐº Ñ‚Ð¾Ð²Ð°Ñ€Ð¾Ð²")
-    // @Story("Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ Ð¿Ð¾Ð¸ÑÐºÐ°")
+    //  @DisplayName("Ïîèñê ïî íåïîëíîìó íàèìåíîâàíèþ")
+    //  @Feature("Ïîèñê òîâàðîâ")
+    // @Story("Ðåçóëüòàò ïîèñêà")
     //  public void shouldSearcShortName()  {
-    //  step("Ð’Ð²ÐµÑÑ‚Ð¸ Ð¿Ð¾Ð»Ð½Ð¾Ðµ Ð½Ð°Ð¸Ð¼ÐµÐ½Ð¾Ð²Ð°Ð½Ð¸Ðµ Ñ‚Ð¾Ð²Ð°Ñ€Ð°" , () -> {
-    //      mainPage.searchInput.sendKeys("ÐÑƒÑ€" + Keys.ENTER);
+    //  step("Ââåñòè ïîëíîå íàèìåíîâàíèå òîâàðà" , () -> {
+    //      mainPage.searchInput.sendKeys("Íóð" + Keys.ENTER);
     //  });
-    //  step("ÐŸÑ€Ð¾Ð²ÐµÑ€Ð¸Ñ‚ÑŒ, Ñ‡Ñ‚Ð¾ Ð² ÑÐ¿Ð¸ÑÐºÐµ Ð²Ñ‹Ð²ÐµÐ´ÐµÐ½Ñ‹ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ‚Ð¾Ð²Ð°Ñ€Ñ‹ Ñ Ð¿Ð¾Ð»Ð½Ñ‹Ð¼ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸ÐµÐ¼ Ð¸Ð· Ð¿Ð¾Ð¸ÑÐºÐ°",() ->{
+    //  step("Ïðîâåðèòü, ÷òî â ñïèñêå âûâåäåíû òîëüêî òîâàðû ñ ïîëíûì íàçâàíèåì èç ïîèñêà",() ->{
     //   //   for (SelenideElement element : catalogPage.elCatalog) {
-    //  element.shouldNotHave(text("ÐÑƒÑ€ "));
+    //  element.shouldNotHave(text("Íóð "));
     //    }
     //  });
     // }
     @Test
-    @DisplayName("ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ð¹ Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ Ð¿Ð¾Ð¸ÑÐºÐ°")
-    @Feature("ÐŸÐ¾Ð¸ÑÐº Ñ‚Ð¾Ð²Ð°Ñ€Ð¾Ð²")
-    @Story("Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ Ð¿Ð¾Ð¸ÑÐºÐ°")
+    @DisplayName("Êîëè÷åñòâî ïîçèöèé íà ñòðàíèöå ïîèñêà")
+    @Feature("Ïîèñê òîâàðîâ")
+    @Story("Ðåçóëüòàò ïîèñêà")
     public void shouldSearcQuantityElement() {
 
 
-        step("Ð’Ð²ÐµÑÑ‚Ð¸ Ð¿Ð¾Ð»Ð½Ð¾Ðµ Ð½Ð°Ð¸Ð¼ÐµÐ½Ð¾Ð²Ð°Ð½Ð¸Ðµ Ñ‚Ð¾Ð²Ð°Ñ€Ð°", () -> {
-            mainPage.searchInput.sendKeys("ÐÑƒÑ€Ð¾Ñ„ÐµÐ½" + Keys.ENTER);
+        step("Ââåñòè ïîëíîå íàèìåíîâàíèå òîâàðà", () -> {
+            mainPage.searchInput.sendKeys("Íóðîôåí" + Keys.ENTER);
         });
-        step("ÐŸÑ€Ð¾Ð²ÐµÑ€Ð¸Ñ‚ÑŒ, Ñ‡Ñ‚Ð¾ Ð² ÑÐ¿Ð¸ÑÐºÐµ Ð²Ñ‹Ð²ÐµÐ´ÐµÐ½Ð¾ Ð½Ðµ Ð¼ÐµÐ½ÑŒÑˆÐ¸ 5 Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ð¹ Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ", () -> {
+        step("Ïðîâåðèòü, ÷òî â ñïèñêå âûâåäåíî íå ìåíüøè 5 ïîçèöèé íà ñòðàíèöå", () -> {
                   int count = catalogPage.elCatalog.size();
                  assertTrue(count >= 5);
 

@@ -37,78 +37,78 @@ public class PostponeTest extends WebTest{
 
 
     @Test
-    @DisplayName("РџСЂРѕРІРµСЂРєР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚Рё С‚РµРєСЃС‚Р° Рѕ СЃСѓРјРјРµ С‚РѕРІР°СЂРѕРІ РІ РёР·Р±СЂР°РЅРЅРѕРј")
-    @Feature("РћС‚Р»РѕР¶РёС‚СЊ")
-    @Story("Р’С‹Р±СЂР°РЅРЅС‹Рµ С‚РѕРІР°СЂС‹")
+    @DisplayName("Проверка корректности текста о сумме товаров в избранном")
+    @Feature("Отложить")
+    @Story("Выбранные товары")
     public void shouldDelayed() {
-        step("РќР°Р¶Р°С‚СЊ РєРЅРѕРїРєСѓ РѕС‚Р»РѕР¶РёС‚СЊ РЅР° РёРєРѕРЅРєРµ С‚РѕРІР°СЂР°", () -> {
+        step("Нажать кнопку отложить на иконке товара", () -> {
             mainPage.buttonLikeIcons.click();}
         );
 
-        step("РџСЂРѕРІРµСЂРёС‚СЊ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ С‚РµРєСЃС‚Р° Рѕ СЃСѓРјРјРµ С‚РѕРІР°СЂРѕРІ РІ РёР·Р±СЂР°РЅРЅРѕРј", () -> {
+        step("Проверить корректность текста о сумме товаров в избранном", () -> {
 
             mainPage.buttonDelayed.shouldBe(visible);
 
-            mainPage.buttonDelayed.shouldHave(attribute("title","Р’ РѕС‚Р»РѕР¶РµРЅРЅС‹С… С‚РѕРІР°СЂРѕРІ РЅР° " +mainPage.priceProduct.getText()+ " СЂСѓР±."));
+            mainPage.buttonDelayed.shouldHave(attribute("title","В отложенных товаров на " +mainPage.priceProduct.getText()+ " руб."));
         });
 
     };
     @Test
-    @DisplayName("РџСЂРѕРІРµСЂРєР° РѕС‚Р»РѕР¶РµРЅРЅРѕРіРѕ С‚РѕРІР°СЂР° РІ РєРѕСЂР·РёРЅРµ")
-    @Feature("РћС‚Р»РѕР¶РёС‚СЊ")
-    @Story("Р’С‹Р±СЂР°РЅРЅС‹Рµ С‚РѕРІР°СЂС‹")
+    @DisplayName("Проверка отложенного товара в корзине")
+    @Feature("Отложить")
+    @Story("Выбранные товары")
     public void shouldDelayedInBasket () {
 
-        step("РќР°Р¶Р°С‚СЊ РєРЅРѕРїРєСѓ РѕС‚Р»РѕР¶РёС‚СЊ РЅР° РёРєРѕРЅРєРµ С‚РѕРІР°СЂР°", () -> {
+        step("Нажать кнопку отложить на иконке товара", () -> {
             mainPage.buttonLikeIcons.click();
         });
         String stringName = mainPage.nameProduct.getText();
 
-        step("РќР°Р¶Р°С‚СЊ РєРЅРѕРїРєСѓ РѕР»РѕР¶РµРЅРЅС‹Рµ С‚РѕРІР°СЂС‹", () -> {
+        step("Нажать кнопку оложенные товары", () -> {
             mainPage.buttonDelayed.click();
         });
         ElementsCollection nameHeader = basketPage.getHeader(basketPage.elBasket.filter(text(stringName)).get(0));
-        step("РџСЂРѕРІРµСЂРєР°, С‡С‚Рѕ РѕС‚Р»РѕР¶РµРЅРЅС‹Р№ С‚РѕРІР°СЂ РѕС‚РѕР±СЂР°Р¶Р°РµС‚СЃСЏ РІ РєРѕСЂР·РёРЅРµ", () -> {
+        step("Проверка, что отложенный товар отображается в корзине", () -> {
             nameHeader.shouldHave(CollectionCondition.texts(stringName));
         });
 
     }
     @Test
-    @DisplayName("РџСЂРѕРІРµСЂРєР° РјРµС‚РєРё РѕС‚Р»РѕР¶РµРЅРЅРѕРіРѕ С‚РѕРІР°СЂР° РІ РєРѕСЂР·РёРЅРµ")
-    @Feature("РћС‚Р»РѕР¶РёС‚СЊ")
-    @Story("Р’С‹Р±СЂР°РЅРЅС‹Рµ С‚РѕРІР°СЂС‹")
+    @DisplayName("Проверка метки отложенного товара в корзине")
+    @Feature("Отложить")
+    @Story("Выбранные товары")
     public void shouldDelayedMetka () {
 
-        step("РќР°Р¶Р°С‚СЊ РєРЅРѕРїРєСѓ РѕС‚Р»РѕР¶РёС‚СЊ РЅР° РёРєРѕРЅРєРµ С‚РѕРІР°СЂР°", () -> {
+        step("Нажать кнопку отложить на иконке товара", () -> {
             mainPage.buttonLikeIcons.click();
         });
         String stringName = mainPage.nameProduct.getText();
 
-        step("РќР°Р¶Р°С‚СЊ РєРЅРѕРїРєСѓ РѕС‚Р»РѕР¶РµРЅРЅС‹Рµ С‚РѕРІР°СЂС‹", () -> {
+        step("Нажать кнопку отложенные товары", () -> {
             mainPage.buttonDelayed.click();
         });
 
-        step("РџСЂРѕРІРµСЂРєР°, С‡С‚Рѕ РѕС‚Р»РѕР¶РµРЅРЅС‹Р№ С‚РѕРІР°СЂ РѕС‚РѕР±СЂР°Р¶Р°РµС‚СЃСЏ РІ РєРѕСЂР·РёРЅРµ СЃ РїРѕРјРµС‚РєРѕР№ РѕС‚Р»РѕР¶РµРЅ", () -> {
-            basketPage.elBasket.filter(text(stringName)).get(0).shouldHave(text("РўРѕРІР°СЂ РѕС‚Р»РѕР¶РµРЅ"));
+        step("Проверка, что отложенный товар отображается в корзине с пометкой отложен", () -> {
+            basketPage.elBasket.filter(text(stringName)).get(0).shouldHave(text("Товар отложен"));
         });
     }
     @Test
-    @DisplayName("РџСЂРѕРІРµСЂРєР°, С‡С‚Рѕ РѕС‚Р»РѕР¶РµРЅРЅС‹Р№ С‚РѕРІР°СЂ РЅРµ РІР»РёСЏРµС‚ РЅР° РёС‚РѕРіРѕРІСѓСЋ СЃСѓРјРјСѓ ")
-    @Feature("РћС‚Р»РѕР¶РёС‚СЊ")
-    @Story("Р’С‹Р±СЂР°РЅРЅС‹Рµ С‚РѕРІР°СЂС‹")
+    @DisplayName("Проверка, что отложенный товар не влияет на итоговую сумму ")
+    @Feature("Отложить")
+    @Story("Выбранные товары")
     public void shouldSumWithoutProdDelayed() {
-        step("РќР°Р¶Р°С‚СЊ РєРЅРѕРїРєСѓ РѕС‚Р»РѕР¶РёС‚СЊ РЅР° РёРєРѕРЅРєРµ С‚РѕРІР°СЂР°", () -> {
+        step("Нажать кнопку отложить на иконке товара", () -> {
             mainPage.buttonLikeIcons.click();}
         );
-        step("РќР°Р¶Р°С‚СЊ РєРЅРѕРїРєСѓ РѕС‚Р»РѕР¶РµРЅРЅС‹Рµ С‚РѕРІР°СЂС‹, РґР»СЏ РїРµСЂРµС…РѕРґР° РІ РєРѕСЂР·РёРЅСѓ", () -> {
+        step("Нажать кнопку отложенные товары, для перехода в корзину", () -> {
             mainPage.buttonDelayed.click();
         });
-        step("РџСЂРѕРІРµСЂРёС‚СЊ, С‡С‚Рѕ РѕС‚Р»РѕР¶РµРЅРЅС‹Р№ С‚РѕРІР°СЂ РІРёРґРµРЅ РІ РєРѕСЂР·РёРЅРµ", () -> {
-            basketPage.elBasket.filter(text("РўРѕРІР°СЂ РѕС‚Р»РѕР¶РµРЅ")).get(0).shouldBe(visible);
+        step("Проверить, что отложенный товар виден в корзине", () -> {
+            basketPage.elBasket.filter(text("Товар отложен")).get(0).shouldBe(visible);
         });
-        step("РџСЂРѕРІРµСЂРёС‚СЊ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ С‚РµРєСЃС‚Р° Рѕ СЃСѓРјРјРµ С‚РѕРІР°СЂРѕРІ РІ РёР·Р±СЂР°РЅРЅРѕРј", () -> {
+        step("Проверить корректность текста о сумме товаров в избранном", () -> {
 
-            basketPage.currentPrice.shouldHave(text("0 СЂСѓР±."));
+            basketPage.currentPrice.shouldHave(text("0 руб."));
         });
 
     };

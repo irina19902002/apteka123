@@ -33,30 +33,30 @@ public class AddDelayProductTest extends WebTest{
 
 
     @Test
-    @DisplayName("ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ñ Ð¾Ñ‚Ð»Ð¾Ð¶ÐµÐ½Ð½Ð¾Ð³Ð¾ Ñ‚Ð¾Ð²Ð°Ñ€Ð° Ðº Ð·Ð°ÐºÐ°Ð·Ñƒ")
-    @Feature("Ð—Ð°ÐºÐ°Ð·")
-    @Story("Ð—Ð°ÐºÐ°Ð· Ð¾Ñ‚Ð»Ð¾Ð¶ÐµÐ½Ð½Ð¾Ð³Ð¾ Ñ‚Ð¾Ð²Ð°Ñ€Ð°")
+    @DisplayName("Ïðîâåðêà äîáàâëåíèÿ îòëîæåííîãî òîâàðà ê çàêàçó")
+    @Feature("Çàêàç")
+    @Story("Çàêàç îòëîæåííîãî òîâàðà")
     public void shouldDelayed() {
-        step("ÐÐ°Ð¶Ð°Ñ‚ÑŒ ÐºÐ½Ð¾Ð¿ÐºÑƒ Ð¾Ñ‚Ð»Ð¾Ð¶Ð¸Ñ‚ÑŒ Ð½Ð° Ð¸ÐºÐ¾Ð½ÐºÐµ Ñ‚Ð¾Ð²Ð°Ñ€Ð°", () -> {
+        step("Íàæàòü êíîïêó îòëîæèòü íà èêîíêå òîâàðà", () -> {
             mainPage.buttonLikeIcons.click();}
         );
         String price = mainPage.priceProduct.getText();
 
-        step("ÐÐ°Ð¶Ð°Ñ‚ÑŒ ÐºÐ½Ð¾Ð¿ÐºÑƒ Ð¾Ñ‚Ð»Ð¾Ð¶ÐµÐ½Ð½Ñ‹Ðµ Ñ‚Ð¾Ð²Ð°Ñ€Ñ‹", () -> {
+        step("Íàæàòü êíîïêó îòëîæåííûå òîâàðû", () -> {
             mainPage.buttonDelayed.click();
         });
-        step("ÐÐ°Ð¶Ð°Ñ‚ÑŒ ÐºÐ½Ð¾Ð¿ÐºÑƒ Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒÐº Ð·Ð°ÐºÐ°Ð·Ñƒ?", () -> {
+        step("Íàæàòü êíîïêó Äîáàâèòüê çàêàçó?", () -> {
             basketPage.buttonAdd.shouldBe(visible);
             basketPage.buttonAdd.click();
 
 
         });
-        step("ÐŸÑ€Ð¾Ð²ÐµÑ€Ð¸Ñ‚ÑŒ. Ñ‡Ñ‚Ð¾ Ñ‚Ð¾Ð²Ð°Ñ€ Ð´Ð¾Ð±Ð°Ð²Ð¸Ð»ÑÑ", () -> {
+        step("Ïðîâåðèòü. ÷òî òîâàð äîáàâèëñÿ", () -> {
 
-            basketPage.filterProduct.shouldHave(text("Ð’ ÐºÐ¾Ñ€Ð·Ð¸Ð½Ðµ 1 Ñ‚Ð¾Ð²Ð°Ñ€"));
+            basketPage.filterProduct.shouldHave(text("Â êîðçèíå 1 òîâàð"));
             basketPage.filterDelayed.shouldNotBe(visible);
         });
-        step("ÐŸÑ€Ð¾Ð²ÐµÑ€Ð¸Ñ‚ÑŒ. Ñ‡Ñ‚Ð¾ ÑÑ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ ÐºÐ¾Ñ€Ð·Ð¸Ð½Ñ‹ Ð¸Ð·Ð¼ÐµÐ½Ð¸Ð»Ð°ÑÑŒ Ð½Ð° Ñ†ÐµÐ½Ñƒ Ð¾Ñ‚Ð»Ð¾Ð¶ÐµÐ½Ð½Ð¾Ð³Ð¾ Ñ‚Ð¾Ð²Ð°Ñ€Ð°", () -> {
+        step("Ïðîâåðèòü. ÷òî ñòîèìîñòü êîðçèíû èçìåíèëàñü íà öåíó îòëîæåííîãî òîâàðà", () -> {
             basketPage.currentPrice.shouldBe(text(price));
         });
 

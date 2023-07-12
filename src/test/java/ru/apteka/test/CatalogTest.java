@@ -34,68 +34,68 @@ public class CatalogTest extends WebTest{
     }
 
     @Test
-    @DisplayName("РџРµСЂРµС…РѕРґ РїРѕ РїРѕРґРєР°С‚РµРіРѕСЂРёСЏРј РІ РєР°С‚Р°Р»РѕРіРµ С‚РѕРІР°СЂРѕРІ")
-    @Feature("РљР°С‚Р°Р»РѕРі С‚РѕРІР°СЂРѕРІ")
-    @Story("РџРѕРґРєР°С‚РµРіРѕСЂРёРё")
+    @DisplayName("Переход по подкатегориям в каталоге товаров")
+    @Feature("Каталог товаров")
+    @Story("Подкатегории")
     public void shouldOpenCatalogTab() {
-        SelenideElement tab = mainPage.tabs.filter(text("Р“РёРіРёРµРЅР°")).get(0);
+        SelenideElement tab = mainPage.tabs.filter(text("Гигиена")).get(0);
 
-        step("РќР°РІРµСЃС‚Рё РєСѓСЂСЃРѕСЂ РЅР° РІРєР»Р°РґРєСѓ", () -> {
+        step("Навести курсор на вкладку", () -> {
             tab.hover();
         });
-        step("РљР»РёРєРЅСѓС‚СЊ РЅР° РїРѕСЏРІРёРІС€СѓСЋСЃСЏ РїРѕРґРєР°С‚РµРіРѕСЂРёСЋ", () -> {
+        step("Кликнуть на появившуюся подкатегорию", () -> {
             ElementsCollection subtabs = mainPage.getSubtabs(tab);
-            subtabs.filter(text("РџСЂРµРґРјРµС‚С‹ Р¶РµРЅСЃРєРѕР№ РіРёРіРёРµРЅС‹")).get(0).click();
+            subtabs.filter(text("Предметы женской гигиены")).get(0).click();
         });
 
 
-        step("РџСЂРѕРІРµСЂРёС‚СЊ, С‡С‚Рѕ РїСЂРѕРёР·РѕС€РµР» РїРµСЂРµС…РѕРґ РЅР° СЃС‚СЂР°РЅРёС†Сѓ С‚РѕРІР°СЂРѕРІ РєР°С‚РµРіРѕСЂРёРё", () -> {
-            catalogPage.header.shouldHave(text("РџСЂРµРґРјРµС‚С‹ Р¶РµРЅСЃРєРѕР№ РіРёРіРёРµРЅС‹"));
+        step("Проверить, что произошел переход на страницу товаров категории", () -> {
+            catalogPage.header.shouldHave(text("Предметы женской гигиены"));
         });
     }
     @Test
-    @DisplayName("РџРµСЂРµС…РѕРґ РїРѕ РїРѕРґРєР°С‚РµРіРѕСЂРёСЏРј РІ РєР°С‚Р°Р»РѕРіРµ С‚РѕРІР°СЂРѕРІ")
-    @Feature("РўРµРєСѓС‰Р°СЏ РїРѕРґРєР°С‚РµРіРѕСЂРёСЏ РІ РєР°С‚Р°Р»РѕРіРµ СЃР»РµРІР°")
-    @Story("РџРѕРґРєР°С‚РµРіРѕСЂРёРё")
+    @DisplayName("Переход по подкатегориям в каталоге товаров")
+    @Feature("Текущая подкатегория в каталоге слева")
+    @Story("Подкатегории")
     public void shouldOpenCatalogTabLeft() {
-        SelenideElement tab = mainPage.tabs.filter(text("Р“РёРіРёРµРЅР°")).get(0);
+        SelenideElement tab = mainPage.tabs.filter(text("Гигиена")).get(0);
 
 
-        step("РќР°РІРµСЃС‚Рё РєСѓСЂСЃРѕСЂ РЅР° РІРєР»Р°РґРєСѓ", () -> {
+        step("Навести курсор на вкладку", () -> {
             tab.hover();
         });
 
-        step("РљР»РёРєРЅСѓС‚СЊ РЅР° РїРѕСЏРІРёРІС€СѓСЋСЃСЏ РїРѕРґРєР°С‚РµРіРѕСЂРёСЋ", () -> {
+        step("Кликнуть на появившуюся подкатегорию", () -> {
             ElementsCollection subtabs = mainPage.getSubtabs(tab);
-            subtabs.filter(text("РџСЂРµРґРјРµС‚С‹ Р¶РµРЅСЃРєРѕР№ РіРёРіРёРµРЅС‹")).get(0).click();
+            subtabs.filter(text("Предметы женской гигиены")).get(0).click();
         });
 
-        step("РџСЂРѕРІРµСЂРёС‚СЊ, С‡С‚Рѕ РІ РєР°С‚Р°Р»РѕРіРµ РІ Р»РµРІРѕР№ С‡Р°СЃС‚Рё СЃС‚СЂР°РЅРёС†С‹ С‚РµРєСѓС‰Р°СЏ РєР°С‚РµРіРѕСЂРёСЏ РѕС‚РѕР±СЂР°Р¶Р°РµС‚СЃСЏ РєРѕСЂСЂРµРєС‚РЅРѕ", () -> {
+        step("Проверить, что в каталоге в левой части страницы текущая категория отображается корректно", () -> {
             ElementsCollection subcategories = catalogPage.getSubCurrentCat(catalogPage.currentCat);
             catalogPage.currentCat.hover();
-            subcategories.filter(text("РџСЂРµРґРјРµС‚С‹ Р¶РµРЅСЃРєРѕР№ РіРёРіРёРµРЅС‹")).get(0).shouldHave(cssClass("current"));
+            subcategories.filter(text("Предметы женской гигиены")).get(0).shouldHave(cssClass("current"));
 
         });
     }
     @Test
-     @DisplayName("РџРµСЂРµС…РѕРґ РїРѕ РїРѕРґРєР°С‚РµРіРѕСЂРёСЏРј РІ РєР°С‚Р°Р»РѕРіРµ С‚РѕРІР°СЂРѕРІ")
-    @Feature("РўРµРєСѓС‰Р°СЏ РїРѕРґРєР°С‚РµРіРѕСЂРёСЏ РІ РєР°С‚Р°Р»РѕРіРµ СЃРІРµСЂС…Сѓ")
-    @Story("РџРѕРґРєР°С‚РµРіРѕСЂРёРё")
+     @DisplayName("Переход по подкатегориям в каталоге товаров")
+    @Feature("Текущая подкатегория в каталоге сверху")
+    @Story("Подкатегории")
     public void shouldOpenCatalogTop() {
-        SelenideElement tab = mainPage.tabs.filter(text("Р“РёРіРёРµРЅР°")).get(0);
-        step("РќР°РІРµСЃС‚Рё РєСѓСЂСЃРѕСЂ РЅР° РІРєР»Р°РґРєСѓ", () -> {
+        SelenideElement tab = mainPage.tabs.filter(text("Гигиена")).get(0);
+        step("Навести курсор на вкладку", () -> {
             tab.hover();
         });
 
-        step("РљР»РёРєРЅСѓС‚СЊ РЅР° РїРѕСЏРІРёРІС€СѓСЋСЃСЏ РїРѕРґРєР°С‚РµРіРѕСЂРёСЋ", () -> {
+        step("Кликнуть на появившуюся подкатегорию", () -> {
             ElementsCollection subtabs = mainPage.getSubtabs(tab);
-            subtabs.filter(text("РџСЂРµРґРјРµС‚С‹ Р¶РµРЅСЃРєРѕР№ РіРёРіРёРµРЅС‹")).get(0).click();
+            subtabs.filter(text("Предметы женской гигиены")).get(0).click();
         });
 
-        step("РџСЂРѕРІРµСЂРёС‚СЊ, С‡С‚Рѕ РІ РєР°С‚Р°Р»РѕРіРµ РІ Р»РµРІРѕР№ С‡Р°СЃС‚Рё СЃС‚СЂР°РЅРёС†С‹ С‚РµРєСѓС‰Р°СЏ РєР°С‚РµРіРѕСЂРёСЏ РѕС‚РѕР±СЂР°Р¶Р°РµС‚СЃСЏ РєРѕСЂСЂРµРєС‚РЅРѕ", () -> {
+        step("Проверить, что в каталоге в левой части страницы текущая категория отображается корректно", () -> {
             ElementsCollection subcattop = catalogPage.getSubCurrentCat(catalogPage.currentCatTop);
             catalogPage.currentCatTop.hover();
-            subcattop.filter(text("РџСЂРµРґРјРµС‚С‹ Р¶РµРЅСЃРєРѕР№ РіРёРіРёРµРЅС‹")).get(0).shouldHave(cssClass("active"));
+            subcattop.filter(text("Предметы женской гигиены")).get(0).shouldHave(cssClass("active"));
 
         });
     }
