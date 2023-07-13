@@ -3,6 +3,7 @@ package ru.apteka.test;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -14,12 +15,11 @@ import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 public class WebTest {
     @BeforeAll
     static void setUp() throws MalformedURLException {
+        Configuration.timeout = 6000;
         boolean isRemote = true;
         if (isRemote) {
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setBrowserName("firefox");
-            capabilities.setCapability("enableVNC:", true);
-            WebDriver driver = new RemoteWebDriver(URI.create("http://localhost:4444/wd/hub").toURL(), capabilities);
+            ChromeOptions options = new ChromeOptions();
+            RemoteWebDriver driver = new RemoteWebDriver(URI.create("http://localhost:4444/wd/hub").toURL(), options);
             setWebDriver(driver);
         } else {
             Configuration.browser = "firefox";
