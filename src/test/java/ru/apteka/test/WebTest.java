@@ -14,7 +14,7 @@ import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 public class WebTest {
     @BeforeAll
     static void setUp() throws MalformedURLException {
-        boolean isRemote = false;
+        boolean isRemote = true;
         if (isRemote) {
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setBrowserName("chrome");
