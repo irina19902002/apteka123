@@ -29,7 +29,6 @@ public class WebTest {
             Configuration.browser = "chrome";
         }
 
-        Selenide.webdriver().driver().getWebDriver().manage().addCookie(new Cookie("current_region", "119212"));
         open("/");
     }
 }
