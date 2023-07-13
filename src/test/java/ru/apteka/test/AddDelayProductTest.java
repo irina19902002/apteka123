@@ -20,8 +20,7 @@ public class AddDelayProductTest extends WebTest{
     BasketPage basketPage = new BasketPage();
     @BeforeEach
     public void openBeforeEach() {
-        //open("https://aptekaeconom.com/");
-        open("/");
+        open("https://aptekaeconom.com/");
         Selenide.webdriver().driver().getWebDriver().manage().addCookie(new Cookie("current_region", "119212"));
         refresh();
         cityPopUp.modal.shouldNotBe(visible);

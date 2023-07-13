@@ -23,8 +23,7 @@ public class CatalogTest extends WebTest{
     CatalogPage catalogPage = new CatalogPage();
     @BeforeEach
     public void openBeforeEach() throws MalformedURLException {
-        //open("https://aptekaeconom.com/");
-        open("/");
+        open("https://aptekaeconom.com/");
         Selenide.webdriver().driver().getWebDriver().manage().addCookie(new Cookie("current_region", "119212"));
         refresh();
         cityPopUp.modal.shouldNotBe(visible);
