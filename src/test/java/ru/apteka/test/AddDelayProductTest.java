@@ -28,7 +28,7 @@ public class AddDelayProductTest extends WebTest{
 
     @AfterEach
     public void closeAfter(){
-        //closeWebDriver();
+        Selenide.closeWebDriver();
     }
 
 

@@ -18,13 +18,13 @@ public class WebTest {
     static void setUp() throws MalformedURLException {
         Configuration.timeout = 6000;
         Configuration.baseUrl = "https://aptekaeconom.com/";
-        boolean isRemote = true;
+        boolean isRemote = false;
         if (isRemote) {
             ChromeOptions options = new ChromeOptions();
             RemoteWebDriver driver = new RemoteWebDriver(URI.create("http://localhost:4444/wd/hub").toURL(), options);
             setWebDriver(driver);
         } else {
-            Configuration.browser = "firefox";
+            Configuration.browser = "chrome";
         }
 
         open("/");

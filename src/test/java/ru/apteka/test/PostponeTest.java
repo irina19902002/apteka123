@@ -31,7 +31,7 @@ public class PostponeTest extends WebTest{
 
     @AfterEach
     public void closeAfter(){
-       // closeWebDriver();
+        Selenide.closeWebDriver();
     }
 
 

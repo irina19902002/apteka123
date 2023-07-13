@@ -27,10 +27,11 @@ public class CatalogTest extends WebTest{
         Selenide.webdriver().driver().getWebDriver().manage().addCookie(new Cookie("current_region", "119212"));
         refresh();
         cityPopUp.modal.shouldNotBe(visible);
+
     }
     @AfterEach
     public void closeAfter(){
-       // closeWebDriver();
+        Selenide.closeWebDriver();
     }
 
     @Test

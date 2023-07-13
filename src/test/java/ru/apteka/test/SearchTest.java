@@ -34,7 +34,7 @@ public class SearchTest extends WebTest{
     }
     @AfterEach
     public void closeAfter(){
-        //closeWebDriver();
+        Selenide.closeWebDriver();
     }
 
 
