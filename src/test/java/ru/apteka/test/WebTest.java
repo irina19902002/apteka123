@@ -18,7 +18,7 @@ public class WebTest {
     static void setUp() throws MalformedURLException {
         Configuration.timeout = 6000;
         Configuration.baseUrl = "https://aptekaeconom.com/";
-        boolean isRemote = false;
+        boolean isRemote = true;
         if (isRemote) {
             ChromeOptions options = new ChromeOptions();
             RemoteWebDriver driver = new RemoteWebDriver(URI.create("http://localhost:4444/wd/hub").toURL(), options);
