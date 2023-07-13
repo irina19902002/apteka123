@@ -17,7 +17,7 @@ public class WebTest {
         boolean isRemote = true;
         if (isRemote) {
             DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setBrowserName("chrome");
+            capabilities.setBrowserName("firefox");
             capabilities.setCapability("enableVNC:", true);
             WebDriver driver = new RemoteWebDriver(URI.create("http://localhost:4444/wd/hub").toURL(), capabilities);
             setWebDriver(driver);
