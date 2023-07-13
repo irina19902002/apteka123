@@ -27,14 +27,15 @@ public class SearchTest extends WebTest{
     @BeforeEach
     public void openBeforeEach() {
 
-        open("https://aptekaeconom.com/");
+        //open("https://aptekaeconom.com/");
+        open("/");
         Selenide.webdriver().driver().getWebDriver().manage().addCookie(new Cookie("current_region", "119212"));
         refresh();
         cityPopUp.modal.shouldNotBe(visible);
     }
     @AfterEach
     public void closeAfter(){
-        closeWebDriver();
+        //closeWebDriver();
     }
 
 
