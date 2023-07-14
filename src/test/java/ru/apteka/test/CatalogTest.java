@@ -33,7 +33,7 @@ public class CatalogTest extends WebTest{
     }
     @AfterEach
     public void closeAfter(){
-        Selenide.closeWebDriver();
+        ///Selenide.closeWebDriver();
     }
 
     @Test

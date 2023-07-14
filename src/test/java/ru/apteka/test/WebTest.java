@@ -19,7 +19,8 @@ public class WebTest {
     @BeforeAll
     static void setUp() throws MalformedURLException {
         Configuration.timeout = 6000;
-        Configuration.baseUrl = "https://aptekaeconom.com/";
+        Configuration.browserSize = "1920x1080";
+        Configuration.baseUrl = "https://aptekaeconom.com";
         boolean isRemote = true;
         if (isRemote) {
             ChromeOptions options = new ChromeOptions();

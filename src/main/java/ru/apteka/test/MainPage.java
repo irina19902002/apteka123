@@ -13,7 +13,7 @@ public class MainPage {
     SelenideElement buttonLikeIcons = $("#bx_3966226736_114168_HIT .like_icons");
     SelenideElement priceProduct = $("#bx_3966226736_114168_HIT .price_value");
     SelenideElement nameProduct = $ ("#bx_3966226736_114168_HIT .item-title span");
-    SelenideElement buttonDelayed = $ ("div[class='wrap_icon inner-table-block baskets big-padding']  a[href='/basket/#delayed']");
+    SelenideElement buttonDelayed = $ ("[class='wrap_icon inner-table-block baskets big-padding'] a[href='/basket/#delayed']");
     ElementsCollection buttonsHeader = $$ (".wrap_icon inner-table-block baskets big-padding");
     public ElementsCollection getSubtabs(SelenideElement tab) {
 
