@@ -20,17 +20,14 @@ public class AddDelayProductTest extends WebTest{
     BasketPage basketPage = new BasketPage();
     @BeforeEach
     public void openBeforeEach() {
-     open("https://aptekaeconom.com/");
+     Selenide.open("https://aptekaeconom.com/");
         Selenide.webdriver().driver().getWebDriver().manage().addCookie(new Cookie("current_region", "103006"));
         //Selenide.webdriver().driver().getWebDriver().manage().addCookie(new Cookie("current_region", "119212"));
         //refresh();
         cityPopUp.modal.shouldNotBe(visible);
     }
 
-    @AfterEach
-    public void closeAfter(){
-        //Selenide.closeWebDriver();
-    }
+
 
 
     @Test
@@ -46,20 +43,20 @@ public class AddDelayProductTest extends WebTest{
       step("Нажать кнопку отложенные товары", () -> {
         mainPage.buttonDelayed.click();
       });
-       /// step("Нажать кнопку Добавитьк заказу?", () -> {
-         //   basketPage.buttonAdd.shouldBe(visible);
-          //  basketPage.buttonAdd.click();
+        step("Нажать кнопку Добавитьк заказу?", () -> {
+           basketPage.buttonAdd.shouldBe(visible);
+           basketPage.buttonAdd.click();
 
 
-       ///});
-        //step("Проверить. что товар добавился", () -> {
+      });
+        step("Проверить. что товар добавился", () -> {
 
-         //   basketPage.filterProduct.shouldHave(text("В корзине 1 товар"));
-          //  basketPage.filterDelayed.shouldNotBe(visible);
-      //  });
-       // step("Проверить. что стоимость корзины изменилась на цену отложенного товара", () -> {
-        //    basketPage.currentPrice.shouldBe(text(price));
-       // });
+         basketPage.filterProduct.shouldHave(text("В корзине 1 товар"));
+           basketPage.filterDelayed.shouldNotBe(visible);
+       });
+       step("Проверить. что стоимость корзины изменилась на цену отложенного товара", () -> {
+            basketPage.currentPrice.shouldBe(text(price));
+        });
 
     }
 }

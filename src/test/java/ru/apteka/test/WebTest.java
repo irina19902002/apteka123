@@ -30,6 +30,6 @@ public class WebTest {
             Configuration.browser = "chrome";
         }
 
-        open("/");
+        Selenide.open("/");
     }
 }
