@@ -31,7 +31,9 @@ public class PostponeTest extends WebTest{
     }
 
 
-
+    @AfterEach void closeAfterEach(){
+        closeWebDriver();
+    }
 
 
     @Test
