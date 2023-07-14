@@ -25,8 +25,8 @@ public class PostponeTest extends WebTest{
     public void openBeforeEach()  {
         //Selenide.webdriver().driver().getWebDriver().manage().addCookie(new Cookie("current_region", "119212"));
         Selenide.open("https://aptekaeconom.com/");
-        Selenide.webdriver().driver().getWebDriver().manage().addCookie(new Cookie("current_region", "119212"));
-        //refresh();
+        Selenide.webdriver().driver().getWebDriver().manage().addCookie(new Cookie("current_region", "103006"));
+        refresh();
         cityPopUp.modal.shouldNotBe(visible);
     }
 
@@ -46,6 +46,7 @@ public class PostponeTest extends WebTest{
         step("Проверить корректность текста о сумме товаров в избранном", () -> {
 
             mainPage.buttonDelayed.shouldBe(visible);
+            mainPage.buttonDelayed.hover();
 
             mainPage.buttonDelayed.shouldHave(attribute("title","В отложенных товаров на " +mainPage.priceProduct.getText()+ " руб."));
         });

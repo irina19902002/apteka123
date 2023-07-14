@@ -30,7 +30,7 @@ public class SearchTest extends WebTest{
 
         //Selenide.webdriver().driver().getWebDriver().manage().addCookie(new Cookie("current_region", "119212"));
         Selenide.open("https://aptekaeconom.com/");
-        Selenide.webdriver().driver().getWebDriver().manage().addCookie(new Cookie("current_region", "119212"));
+        Selenide.webdriver().driver().getWebDriver().manage().addCookie(new Cookie("current_region", "103006"));
         //refresh();
         cityPopUp.modal.shouldNotBe(visible);
     }
