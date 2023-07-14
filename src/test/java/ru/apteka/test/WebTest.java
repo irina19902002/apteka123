@@ -34,6 +34,7 @@ public class WebTest {
         Configuration.remote = "http://localhost:4444/wd/hub";
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
+        Configuration.baseUrl = "https://aptekaeconom.com";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability( "enableVNC",  true);
         capabilities.setCapability( "enableVideo",  true);
