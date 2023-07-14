@@ -21,17 +21,18 @@ public class WebTest {
         //Configuration.timeout = 6000;
        // Configuration.browserSize = "1920x1080";
        // Configuration.baseUrl = "https://aptekaeconom.com";
-       // boolean isRemote = true;
-       // if (isRemote) {
-        //    ChromeOptions options = new ChromeOptions();
-        //    RemoteWebDriver driver = new RemoteWebDriver(URI.create("http://localhost:4444/wd/hub").toURL(), options);
-       //  //   setWebDriver(driver);
-        //} else {
+      boolean isRemote = true;
+       if (isRemote) {
+         ChromeOptions options = new ChromeOptions();
+         RemoteWebDriver driver = new RemoteWebDriver(URI.create("http://localhost:4444/wd/hub").toURL(), options);
+ setWebDriver(driver);
+        }
+       //else {
         ////    Configuration.browser = "chrome";
        // }
 
        // Selenide.open("/");
-        Configuration.remote = "http://localhost:4444/wd/hub";
+       // Configuration.remote = "http://localhost:4444/wd/hub";
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://aptekaeconom.com";
@@ -39,5 +40,6 @@ public class WebTest {
         capabilities.setCapability( "enableVNC",  true);
         capabilities.setCapability( "enableVideo",  true);
         Configuration.browserCapabilities = capabilities;
+
     }
 }
