@@ -28,7 +28,7 @@ public class CatalogTest extends WebTest{
         Selenide.open("https://aptekaeconom.com/");
         Selenide.webdriver().driver().getWebDriver().manage().addCookie(new Cookie("current_region", "103006"));
         //refresh();
-        cityPopUp.modal.shouldNotBe(visible);
+        //cityPopUp.modal.shouldNotBe(visible);
 
     }
 

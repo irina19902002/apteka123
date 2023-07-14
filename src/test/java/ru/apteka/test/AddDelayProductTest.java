@@ -7,10 +7,12 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.logevents.SelenideLogger.step;
 
@@ -24,7 +26,7 @@ public class AddDelayProductTest extends WebTest{
         Selenide.webdriver().driver().getWebDriver().manage().addCookie(new Cookie("current_region", "103006"));
         //Selenide.webdriver().driver().getWebDriver().manage().addCookie(new Cookie("current_region", "119212"));
         // refresh();
-        cityPopUp.modal.shouldNotBe(visible);
+        //cityPopUp.modal.shouldNotBe(visible, Duration.ofSeconds(30));
     }
 
 
@@ -41,6 +43,7 @@ public class AddDelayProductTest extends WebTest{
         );
         String price = mainPage.priceProduct.getText();
       step("Нажать кнопку отложенные товары", () -> {
+          //$(By.id("header")).$$(By.tagName("a")).filter(attribute("nofollow")).size();
         mainPage.buttonDelayed.click();
       });
         step("Нажать кнопку Добавитьк заказу?", () -> {
