@@ -18,18 +18,25 @@ import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 public class WebTest {
     @BeforeAll
     static void setUp() throws MalformedURLException {
-        Configuration.timeout = 6000;
-        Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://aptekaeconom.com";
-        boolean isRemote = true;
-        if (isRemote) {
-            ChromeOptions options = new ChromeOptions();
-            RemoteWebDriver driver = new RemoteWebDriver(URI.create("http://localhost:4444/wd/hub").toURL(), options);
-            setWebDriver(driver);
-        } else {
-            Configuration.browser = "chrome";
-        }
+        //Configuration.timeout = 6000;
+       // Configuration.browserSize = "1920x1080";
+       // Configuration.baseUrl = "https://aptekaeconom.com";
+       // boolean isRemote = true;
+       // if (isRemote) {
+        //    ChromeOptions options = new ChromeOptions();
+        //    RemoteWebDriver driver = new RemoteWebDriver(URI.create("http://localhost:4444/wd/hub").toURL(), options);
+       //  //   setWebDriver(driver);
+        //} else {
+        ////    Configuration.browser = "chrome";
+       // }
 
-        Selenide.open("/");
+       // Selenide.open("/");
+        Configuration.remote = "http://localhost:4444/wd/hub";
+        Configuration.browser = "chrome";
+        Configuration.browserSize = "1920x1080";
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability( "enableVNC",  true);
+        capabilities.setCapability( "enableVideo",  true);
+        Configuration.browserCapabilities = capabilities;
     }
 }
