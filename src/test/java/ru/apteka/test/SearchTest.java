@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.Keys;
 
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
@@ -83,8 +84,8 @@ public class SearchTest extends WebTest{
             mainPage.searchInput.sendKeys("Нурофен" + Keys.ENTER);
         });
         step("Проверить, что в списке выведено не меньши 5 позиций на странице", () -> {
-                    int count = catalogPage.elCatalog.size();
-                    assertTrue(count >= 5);
+                   catalogPage.elCatalog.shouldHave(sizeGreaterThan(1));
+
 
                 }
         );
