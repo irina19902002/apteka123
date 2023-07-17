@@ -16,33 +16,29 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.logevents.SelenideLogger.step;
 
-public class PostponeTest extends WebTest{
-    CityPopUp cityPopUp = new CityPopUp();
+public class PostponeTest extends WebTest {
+
     MainPage mainPage = new MainPage();
     BasketPage basketPage = new BasketPage();
 
     @BeforeEach
-    public void openBeforeEach()  {
-        //Selenide.webdriver().driver().getWebDriver().manage().addCookie(new Cookie("current_region", "119212"));
+    public void openBeforeEach() {
         Selenide.open("https://aptekaeconom.com/");
         Selenide.webdriver().driver().getWebDriver().manage().addCookie(new Cookie("current_region", "103006"));
         refresh();
-        //cityPopUp.modal.shouldNotBe(visible);
     }
 
-
-    @AfterEach void closeAfterEach(){
+    @AfterEach
+    void closeAfterEach() {
         closeWebDriver();
     }
-
 
     @Test
     @DisplayName("Проверка корректности текста о сумме товаров в избранном")
     @Feature("Отложить")
     @Story("Выбранные товары")
     public void shouldDelayed() {
-        step("Нажать кнопку отложить на иконке товара", () -> {
-            mainPage.buttonLikeIcons.click();}
+        step("Нажать кнопку отложить на иконке товара", () -> mainPage.buttonLikeIcons.click()
         );
 
         step("Проверить корректность текста о сумме товаров в избранном", () -> {
@@ -50,61 +46,53 @@ public class PostponeTest extends WebTest{
             mainPage.buttonDelayed.shouldBe(visible);
             mainPage.buttonDelayed.hover();
 
-            mainPage.buttonDelayed.shouldHave(attribute("title","В отложенных товаров на " +mainPage.priceProduct.getText()+ " руб."));
+            mainPage.buttonDelayed.shouldHave(attribute("title", "В отложенных товаров на " + mainPage.priceProduct.getText() + " руб."));
         });
 
-    };
+    }
+
+
     @Test
     @DisplayName("Проверка отложенного товара в корзине")
     @Feature("Отложить")
     @Story("Выбранные товары")
-    public void shouldDelayedInBasket () {
+    public void shouldDelayedInBasket() {
 
-        step("Нажать кнопку отложить на иконке товара", () -> {
-            mainPage.buttonLikeIcons.click();
-        });
+        step("Нажать кнопку отложить на иконке товара", () -> mainPage.buttonLikeIcons.click());
         String stringName = mainPage.nameProduct.getText();
 
-        step("Нажать кнопку оложенные товары", () -> {
-            mainPage.buttonDelayed.click();
-        });
+        step("Нажать кнопку оложенные товары", () -> mainPage.buttonDelayed.click());
         ElementsCollection nameHeader = basketPage.getHeader(basketPage.elBasket.filter(text(stringName)).get(0));
         step("Проверка, что отложенный товар отображается в корзине", () -> {
             nameHeader.shouldHave(CollectionCondition.texts(stringName));
         });
 
     }
+
     @Test
     @DisplayName("Проверка метки отложенного товара в корзине")
     @Feature("Отложить")
     @Story("Выбранные товары")
-    public void shouldDelayedMetka () {
+    public void shouldDelayedMetka() {
 
-        step("Нажать кнопку отложить на иконке товара", () -> {
-            mainPage.buttonLikeIcons.click();
-        });
+        step("Нажать кнопку отложить на иконке товара", () -> mainPage.buttonLikeIcons.click());
         String stringName = mainPage.nameProduct.getText();
 
-        step("Нажать кнопку отложенные товары", () -> {
-            mainPage.buttonDelayed.click();
-        });
+        step("Нажать кнопку отложенные товары", () -> mainPage.buttonDelayed.click());
 
         step("Проверка, что отложенный товар отображается в корзине с пометкой отложен", () -> {
-           //// basketPage.elBasket.filter(text(stringName)).shouldHave(CollectionCondition.sizeGreaterThan(0));
             basketPage.elBasket.filter(text(stringName)).get(0).shouldHave(text("Товар отложен"));
         });
     }
+
     @Test
     @DisplayName("Проверка, что отложенный товар не влияет на итоговую сумму ")
     @Feature("Отложить")
     @Story("Выбранные товары")
     public void shouldSumWithoutProdDelayed() {
-        step("Нажать кнопку отложить на иконке товара", () -> {
-            mainPage.buttonLikeIcons.click();}
+        step("Нажать кнопку отложить на иконке товара", () -> mainPage.buttonLikeIcons.click()
         );
-        step("Нажать кнопку отложенные товары, для перехода в корзину", () -> {
-            mainPage.buttonDelayed.click();
-        });
+        step("Нажать кнопку отложенные товары, для перехода в корзину", () -> mainPage.buttonDelayed.click());
         step("Проверить, что отложенный товар виден в корзине", () -> {
             basketPage.elBasket.filter(text("Товар отложен")).get(0).shouldBe(visible);
         });
@@ -113,6 +101,7 @@ public class PostponeTest extends WebTest{
             basketPage.currentPrice.shouldHave(text("0 руб."));
         });
 
-    };
+    }
+
 
 }

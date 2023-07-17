@@ -13,30 +13,25 @@ import org.openqa.selenium.Keys;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.logevents.SelenideLogger.step;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class SearchTest extends WebTest{
-    CityPopUp cityPopUp = new CityPopUp();
+
+public class SearchTest extends WebTest {
+
     MainPage mainPage = new MainPage();
     CatalogPage catalogPage = new CatalogPage();
 
-    static int i = 0;
 
     @BeforeEach
     public void openBeforeEach() {
-
-
-        //Selenide.webdriver().driver().getWebDriver().manage().addCookie(new Cookie("current_region", "119212"));
         Selenide.open("https://aptekaeconom.com/");
         Selenide.webdriver().driver().getWebDriver().manage().addCookie(new Cookie("current_region", "103006"));
         refresh();
-        //cityPopUp.modal.shouldNotBe(visible);
     }
 
-    @AfterEach void closeAfterEach(){
+    @AfterEach
+    void closeAfterEach() {
         closeWebDriver();
     }
 
@@ -44,35 +39,17 @@ public class SearchTest extends WebTest{
     @DisplayName("Поиск по полному наименованию")
     @Feature("Поиск товаров")
     @Story("Результат поиска")
-    public void shouldSearchFullName()  {
+    public void shouldSearchFullName() {
 
-        step("Ввести полное наименование товара" , () -> {
-            mainPage.searchInput.sendKeys("Нурофен" + Keys.ENTER);
-        });
-        step("Проверить, что в списке выведены только товары с полным названием из поиска",() ->{
-            for (SelenideElement element : catalogPage.elCatalog) {
+        step("Ввести полное наименование товара", () -> mainPage.searchInput.sendKeys("Нурофен" + Keys.ENTER)
+        );
+        step("Проверить, что в списке выведены только товары с полным названием из поиска", () -> {
+            for (SelenideElement element : catalogPage.nameElement) {
                 element.shouldHave(text("Нурофен "));
             }
-            ///  catalogPage.elCatalog.shouldHave(text("Нурофен "));
         });
-
-
-
     }
-    //  @Test
-    //  @DisplayName("Поиск по неполному наименованию")
-    //  @Feature("Поиск товаров")
-    // @Story("Результат поиска")
-    //  public void shouldSearcShortName()  {
-    //  step("Ввести полное наименование товара" , () -> {
-    //      mainPage.searchInput.sendKeys("Нур" + Keys.ENTER);
-    //  });
-    //  step("Проверить, что в списке выведены только товары с полным названием из поиска",() ->{
-    //   //   for (SelenideElement element : catalogPage.elCatalog) {
-    //  element.shouldNotHave(text("Нур "));
-    //    }
-    //  });
-    // }
+
     @Test
     @DisplayName("Количество позиций на странице поиска")
     @Feature("Поиск товаров")
@@ -80,11 +57,11 @@ public class SearchTest extends WebTest{
     public void shouldSearcQuantityElement() {
 
 
-        step("Ввести полное наименование товара", () -> {
-            mainPage.searchInput.sendKeys("Нурофен" + Keys.ENTER);
-        });
+        step("Ввести полное наименование товара", () ->
+                mainPage.searchInput.sendKeys("Нурофен" + Keys.ENTER)
+        );
         step("Проверить, что в списке выведено не меньши 5 позиций на странице", () -> {
-                   catalogPage.elCatalog.shouldHave(sizeGreaterThan(1));
+                    catalogPage.elCatalog.shouldHave(sizeGreaterThan(5));
 
 
                 }

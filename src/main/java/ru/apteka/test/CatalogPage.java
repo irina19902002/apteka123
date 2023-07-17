@@ -10,7 +10,8 @@ public class CatalogPage {
     SelenideElement header = $("h1");
     SelenideElement currentCat = $("[class='full has-child current opened m_line v_hover']");
     SelenideElement currentCatTop = $("[class='menu-item dropdown wide_menu   active']");
-    ElementsCollection elCatalog = $$("div.item-title span");
+    ElementsCollection elCatalog = $$(".item_block");
+    ElementsCollection nameElement = $$ (".item-title span");
 
     public ElementsCollection getSubCurrentCat(SelenideElement subCat) {
         return subCat.$$("ul li");

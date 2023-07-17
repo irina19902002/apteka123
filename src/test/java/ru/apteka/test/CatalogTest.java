@@ -11,27 +11,25 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;
 
-import java.net.MalformedURLException;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.logevents.SelenideLogger.step;
 
-public class CatalogTest extends WebTest{
+public class CatalogTest extends WebTest {
     MainPage mainPage = new MainPage();
-    CityPopUp cityPopUp = new CityPopUp();
     CatalogPage catalogPage = new CatalogPage();
-    @BeforeEach
-    public void openBeforeEach() throws MalformedURLException {
 
-       // Selenide.webdriver().driver().getWebDriver().manage().addCookie(new Cookie("current_region", "119212"));
+    @BeforeEach
+    public void openBeforeEach()  {
         Selenide.open("https://aptekaeconom.com/");
-        Selenide.webdriver().driver().getWebDriver().manage().addCookie(new Cookie("current_region", "103006"));
+        Selenide.webdriver().driver().getWebDriver().manage().addCookie(new Cookie("current_region", "119212"));
         refresh();
-        //cityPopUp.modal.shouldNotBe(visible);
 
     }
-    @AfterEach void closeAfterEach(){
+
+    @AfterEach
+    void closeAfterEach() {
         closeWebDriver();
     }
 
@@ -56,6 +54,7 @@ public class CatalogTest extends WebTest{
             catalogPage.header.shouldHave(text("Предметы женской гигиены"));
         });
     }
+
     @Test
     @DisplayName("Переход по подкатегориям в каталоге товаров")
     @Feature("Текущая подкатегория в каталоге слева")
@@ -80,8 +79,9 @@ public class CatalogTest extends WebTest{
 
         });
     }
+
     @Test
-     @DisplayName("Переход по подкатегориям в каталоге товаров")
+    @DisplayName("Переход по подкатегориям в каталоге товаров")
     @Feature("Текущая подкатегория в каталоге сверху")
     @Story("Подкатегории")
     public void shouldOpenCatalogTop() {

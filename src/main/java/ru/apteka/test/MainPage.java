@@ -13,9 +13,10 @@ public class MainPage {
     SelenideElement searchInput = $("#title-search-input_fixed");
     SelenideElement buttonLikeIcons = $("#bx_3966226736_114168_HIT .like_icons");
     SelenideElement priceProduct = $("#bx_3966226736_114168_HIT .price_value");
-    SelenideElement nameProduct = $ ("#bx_3966226736_114168_HIT .item-title span");
-    SelenideElement buttonDelayed = $ ("[class='wrap_icon inner-table-block baskets big-padding'] a[href='/basket/#delayed']");
-    ElementsCollection buttonsHeader = $$ (".wrap_icon inner-table-block baskets big-padding");
+    SelenideElement nameProduct = $("#bx_3966226736_114168_HIT .item-title span");
+    SelenideElement buttonDelayed = $("[class='wrap_icon inner-table-block baskets big-padding'] a[href='/basket/#delayed']");
+    ElementsCollection buttonsHeader = $$(".wrap_icon inner-table-block baskets big-padding");
+
     public ElementsCollection getSubtabs(SelenideElement tab) {
 
         return tab.$$("ul li");
